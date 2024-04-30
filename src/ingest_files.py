@@ -43,6 +43,9 @@ for csv in filenames:
     logger.info(f'begin ingest of {basename}')
     try:
         for context_df in pd.read_csv(csv, dtype=str, chunksize=CHUNK_SIZE):
+            # Fix for author csv, which is missing headers
+            if basename == "author":
+                context_df.columns = ['authorName']
             context_df.to_sql(basename, con=engine,
                               if_exists="append", index=False)
             logger.info(f'appended {context_df.shape[0]} rows')

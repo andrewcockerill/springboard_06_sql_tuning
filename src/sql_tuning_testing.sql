@@ -236,5 +236,5 @@ CREATE INDEX idx_booktitle_proceedings ON proceedings(booktitle);
 CREATE INDEX idx_booktitle_inproceedings ON inproceedings(booktitle);
 
 --/*Cleanup:*/
-CREATE INDEX idx_booktitle_proceedings;
-CREATE INDEX idx_booktitle_inproceedings;
+DROP INDEX idx_booktitle_proceedings;
+DROP INDEX idx_booktitle_inproceedings;
